@@ -1,0 +1,19 @@
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/helpers/functions.php';
+
+use App\Router;
+
+// Instantiate the router
+$router = new Router();
+
+
+require __DIR__ . '/routes/web.php';
+
+// Parse current request
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Strips query string
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
+// Route the request
+$router->route($uri, $method);
