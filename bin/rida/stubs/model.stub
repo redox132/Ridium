@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Models;
+
+use App\Database\Connection;
+use PDO;
+
+class {{modelName}} extends Model
+{
+    // optional 
+    // protected static string $table = '{{tableName}}';
+}

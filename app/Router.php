@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App;
 
 class Router
@@ -15,6 +17,22 @@ class Router
     {
         $this->add('POST', $uri, $controller);
     }
+    
+    public function put(string $uri, array|string $controller): void
+    {
+        $this->add('PUT', $uri, $controller);
+    }
+
+    public function delete(string $uri, array|string $controller): void
+    {
+        $this->add('DELETE', $uri, $controller);
+    }
+
+    public function patch(string $uri, array|string $controller): void
+    {
+        $this->add('PATCH', $uri, $controller);
+    }
+   
 
     private function add(string $method, string $uri, array|string $controller): void
     {
