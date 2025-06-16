@@ -1,8 +1,8 @@
 <?php
 
 use App\Controllers\HomeController;
-use App\Controllers\UserController;
 
-$router->get('/', [HomeController::class, 'index']);
+// Controller-based
 
-$router->post('/user/store', [UserController::class, 'store']);
+// View-only
+$router->view('/', 'home', ['name' => "Rida"]);

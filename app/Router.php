@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App;
 
@@ -17,7 +17,7 @@ class Router
     {
         $this->add('POST', $uri, $controller);
     }
-    
+
     public function put(string $uri, array|string $controller): void
     {
         $this->add('PUT', $uri, $controller);
@@ -32,7 +32,30 @@ class Router
     {
         $this->add('PATCH', $uri, $controller);
     }
-   
+
+    public function view(string $uri, string $view, mixed $data = []): void
+    {
+        if ($_SERVER['REQUEST_URI'] !== $uri) {
+            return;
+        }
+
+        $viewPath = __DIR__ . "/../resources/views/{$view}.blade.php";
+
+        if (!file_exists($viewPath)) {
+            http_response_code(404);
+            echo "View '{$view}.view.php' not found.";
+            exit;
+        }
+
+        if (is_array($data)) {
+            extract($data); 
+        }
+
+        require $viewPath;
+        exit;
+    }
+
+
 
     private function add(string $method, string $uri, array|string $controller): void
     {
@@ -51,7 +74,7 @@ class Router
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === $method) {
                 if (is_array($route['controller'])) {
-                    [$class, $action] = $route['controller']; 
+                    [$class, $action] = $route['controller'];
 
                     if (class_exists($class) && method_exists($class, $action)) {
                         return (new $class)->$action();

@@ -1,0 +1,63 @@
+<?php
+
+function make_factory(?string $factoryName): void
+{
+    if (!$factoryName) {
+        echo "\nDid you mean: php bin/rida make:factory FactoryName\n\n";
+        exit(1);
+    }
+
+    // Sanitize and format the factory name
+    $factoryName = preg_replace('/[^A-Za-z0-9]/', '', ucfirst($factoryName));
+    if (!$factoryName) {
+        echo "\nInvalid factory name provided.\n";
+        exit(1);
+    }
+
+    $factoryDir = __DIR__ . '/../../app/database/factories';
+    $factoryStubPath = __DIR__ . '/../stubs/factory.stub';
+    $targetFile = $factoryDir . '/' . $factoryName . '.php';
+
+    // Check if the stub file exists
+    if (!file_exists($factoryStubPath)) {
+        echo "\nFactory stub not found at: {$factoryStubPath}\n\n";
+        exit(1);
+    }
+
+    // Create the directory if it does not exist
+    if (!is_dir($factoryDir)) {
+        mkdir($factoryDir, 0777, true);
+    }
+
+    // Check for existing factory
+    if (file_exists($targetFile)) {
+        echo "\nFactory '{$factoryName}' already exists!\n\n";
+        exit(1);
+    }
+
+    // Load and replace placeholders in the stub
+    $stub = file_get_contents($factoryStubPath);
+    $stub = str_replace('{{ factoryName }}', $factoryName, $stub);
+
+    // Write the final file
+    file_put_contents($targetFile, $stub);
+
+    // Color codes
+    $cyan = "\033[1;36m";
+    $green = "\033[0;32m";
+    $reset = "\033[0m";
+
+    // ASCII Art + Confirmation
+    echo <<<ASCII
+{$green}
+#####   #######  ###           #
+#    #     #     #   #       #   #    
+#####      #     #    #     #     #
+# #        #     #    #    ######### 
+#  #       #     #   #    #         #
+#    #  #######  ###     #           #
+{$reset}
+ASCII;
+
+    echo "\n\n{$cyan}Factory '{$factoryName}' created successfully at: app/database/factories/{$factoryName}.php{$reset}\n\n";
+}

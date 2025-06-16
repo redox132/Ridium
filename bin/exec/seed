@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+
+use App\Database\Seeders\DatabaseSeeder;
+
+function seed(): void
+{
+    $seeder = new DatabaseSeeder();
+    $seeder->run();
+    echo "Database seeding completed successfully.\n";
+}
+

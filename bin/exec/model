@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+function make_model(?string $modelName): void
+{
+    if (!$modelName) {
+        echo "Usage: php bin/rida make:model ModelName\n";
+        exit(1);
+    }
+
+    $modelName = ucfirst($modelName);
+    $tableName = strtolower($modelName) . 's';
+
+    $stubPath = __DIR__ . '/../stubs/model.stub';
+    if (!file_exists($stubPath)) {
+        $stubPath = __DIR__ . '/../../stubs/model.stub';
+    }
+    $targetDir = __DIR__ . '/../../app/Models';
+    $targetFile = $targetDir . '/' . $modelName . '.php';
+
+    if (!file_exists($stubPath)) {
+        echo "Model stub not found at $stubPath\n";
+        exit(1);
+    }
+
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
+
+    $stub = file_get_contents($stubPath);
+    $stub = str_replace(['{{modelName}}', '{{tableName}}'], [$modelName, $tableName], $stub);
+
+    file_put_contents($targetFile, $stub);
+
+    echo <<<ASCII
+
+#####   #######  ###           #
+#    #     #     #   #       #   #    
+#####      #     #    #     #     #
+# #        #     #    #    ######### 
+#  #       #     #   #    #         #
+#    #  #######  ###     #           #
+
+ASCII;
+
+    echo "\n";
+    echo "------------------------------------------------------------\n";
+    echo "Model created: app/Models/{$modelName}.php at " . date('Y-m-d H:i:s') . "\n";
+    echo "------------------------------------------------------------\n";
+}

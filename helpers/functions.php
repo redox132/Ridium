@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 
 function basePath(string $path = ''): string
@@ -10,7 +10,8 @@ function basePath(string $path = ''): string
 
 function view(string $viewPath, array $data = [])
 {
-    $fullPath = basePath($viewPath);
+
+    $fullPath = basePath("resources/views/{$viewPath}.blade.php"); ;
 
     if (!file_exists($fullPath)) {
         throw new \Exception("View [{$viewPath}] not found.");
@@ -28,3 +29,5 @@ function redirect(string $path): void
     http_response_code(302);
     exit();
 }
+
+

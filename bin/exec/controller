@@ -1,0 +1,44 @@
+<?php
+
+function make_controller(?string $controllerName): void
+{
+    if (!$controllerName) {
+        echo "Usage: php bin/rida make:controller ControllerName\n";
+        exit(1);
+    }
+
+    $controllerName = ucfirst($controllerName);
+    $controllerStubPath = __DIR__ . '/../stubs/controller.stub';
+    $targetDir = __DIR__ . '/../../app/controllers';
+    $targetFile = $targetDir . '/' . $controllerName . '.php';
+
+    if (!file_exists($controllerStubPath)) {
+        echo "Controller stub not found at $controllerStubPath\n";
+        exit(1);
+    }
+
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
+
+    $stub = file_get_contents($controllerStubPath);
+    $stub = str_replace('{{ controllerName }}', $controllerName, $stub);
+
+    file_put_contents($targetFile, $stub);
+
+    echo <<<ASCII
+
+#####   #######  ###           #
+#    #     #     #   #       #   #    
+#####      #     #    #     #     #
+# #        #     #    #    ######### 
+#  #       #     #   #    #         #
+#    #  #######  ###     #           #
+
+ASCII;
+
+    echo "\n";
+    echo "--------------------------------------------------------------------\n";
+    echo "\033[1;32mController {$controllerName}\033[0m created at app/controllers/{$controllerName}.php at " . date('Y-m-d H:i:s') . "\n";
+    echo "--------------------------------------------------------------------\n\n";
+}
