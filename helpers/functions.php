@@ -20,3 +20,11 @@ function view(string $viewPath, array $data = [])
 
     return require $fullPath;
 }
+
+
+function redirect(string $path): void
+{
+    header("Location: /{$path}");
+    http_response_code(302);
+    exit();
+}

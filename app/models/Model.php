@@ -1,11 +1,13 @@
 <?php
+
 namespace App\Models;
 
 use App\Database\Connection;
 use PDO;
 use ReflectionClass;
 
-class Model 
+
+class Model
 {
     protected static string $table;
 
@@ -17,10 +19,8 @@ class Model
     public static function all(): array
     {
         $sql = "SELECT * FROM " . static::resolveTable();
-      $results = Connection::query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $results = Connection::query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return array_map(fn($row) => static::hydrate($row), $results);
-
-        
     }
 
     public static function find(int $id): static|null
@@ -28,16 +28,15 @@ class Model
     {
         $sql = "SELECT * FROM " . static::resolveTable() . " WHERE id = :id";
         $stmt = Connection::query($sql, ['id' => $id]);
-       $row = Connection::query($sql, ['id' => $id])->fetch(PDO::FETCH_ASSOC);
+        $row = Connection::query($sql, ['id' => $id])->fetch(PDO::FETCH_ASSOC);
         return $row ? static::hydrate($row) : null;
-
     }
 
     public static function create(array $data): bool
     {
         $columns = array_keys($data);
         $placeholders = array_map(fn($key) => ":$key", $columns);
-        
+
         $sql = sprintf(
             "INSERT INTO %s (%s) VALUES (%s)",
             static::resolveTable(),
@@ -49,27 +48,27 @@ class Model
     }
 
 
-        protected static function hydrate(array $data): static
-        {
-            $model = new static();
-            foreach ($data as $key => $value) {
-                $model->$key = $value;
-            }
-            return $model;
+    protected static function hydrate(array $data): static
+    {
+        $model = new static();
+        foreach ($data as $key => $value) {
+            $model->$key = $value;
         }
+        return $model;
+    }
 
 
 
     public function hasMany(string $relatedClass, string $foreignKey, string $localKey = 'id'): array
     {
-        $relatedTable = (new $relatedClass)::resolveTable();
+        $relatedTable = $relatedClass::resolveTable();
         $sql = "SELECT * FROM $relatedTable WHERE $foreignKey = :value";
         return Connection::query($sql, ['value' => $this->$localKey])->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function belongsTo(string $relatedClass, string $foreignKey, string $ownerKey = 'id'): ?array
     {
-        $relatedTable = (new $relatedClass)::resolveTable();
+        $relatedTable = $relatedClass::resolveTable();
         $sql = "SELECT * FROM $relatedTable WHERE $ownerKey = :value LIMIT 1";
         $stmt = Connection::query($sql, ['value' => $this->$foreignKey]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;

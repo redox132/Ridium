@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Database\Connection;
-use PDO;
 
 class User extends Model
 {
@@ -12,7 +10,7 @@ class User extends Model
 
     public function posts(): array
     {
-        return $this->hasMany(Post::class, 'id');
+        return $this->hasMany(Post::class, 'user_id');
     }
     
 }

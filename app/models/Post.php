@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Database\Connection;
-use PDO;
 
 class Post extends Model
 {
@@ -12,6 +10,6 @@ class Post extends Model
 
     public function user(): ?array
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class ,'id');
     }
 }

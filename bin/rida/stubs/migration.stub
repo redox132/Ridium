@@ -1,0 +1,16 @@
+<?php
+
+return new class {
+    public function up(PDO $pdo)
+    {
+        $pdo->exec("
+           // sql code
+        ");
+    }
+
+    public function down(PDO $pdo)
+    {
+        $pdo->exec("DROP TABLE IF EXISTS ...");
+    }
+    
+};

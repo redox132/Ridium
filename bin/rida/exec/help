@@ -1,0 +1,47 @@
+<?php
+
+
+
+$cyan = "\033[1;36m";     // Bold Cyan
+$green = "\033[0;32m";    // Green
+$reset = "\033[0m";       // Reset color
+
+echo "\n";
+echo "{$green}
+#####   #######  ###           #
+#    #     #     #   #       #   #    
+#####      #     #    #     #     #
+# #        #     #    #    ######### 
+#  #       #     #   #    #         #
+#    #  #######  ###     #           #
+{$reset}\n";
+
+
+echo "\n";
+echo "\n";
+echo "Help???\n";
+echo "\n";
+
+
+
+// ANSI color codes
+$cyan = "\033[36m";
+$yellow = "\033[33m";
+$green = "\033[32m";
+$reset = "\033[0m";
+$bold = "\033[1m";
+
+echo "{$bold}{$cyan}Available commands:{$reset}\n";
+echo "{$yellow}------------------------------------{$reset}\n";
+echo "  {$green}php bin/rida/exec/migrate{$reset} - Run all migrations\n";
+echo "{$yellow}------------------------------------{$reset}\n";
+echo "  {$green}php bin/rida/exec/migration <Migration Name>{$reset} - Create a new migration\n";
+echo "{$yellow}------------------------------------{$reset}\n";
+echo "  {$green}php bin/rida/exec/factory <Factory Name>{$reset} - Create a new factory\n";
+echo "{$yellow}------------------------------------{$reset}\n";
+echo "  {$green}php bin/rida/exec/model <Model Name>{$reset} - Create a new model\n";
+echo "{$yellow}------------------------------------{$reset}\n";
+echo "  {$green}php bin/rida/exec/controller <Controller Name>{$reset} - Create a new controller\n";
+echo "{$yellow}------------------------------------{$reset}\n";
+echo "  {$green}php bin/rida/exec/view <view Name>{$reset} - Create a new view file\n";
+echo "\n";

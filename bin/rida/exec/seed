@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use App\Database\Seeders\DatabaseSeeder;
+
+$seeder = new DatabaseSeeder();
+$seeder->run();

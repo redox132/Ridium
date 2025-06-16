@@ -41,6 +41,12 @@ class Connection
         }
     }
 
+    static public function getPDO(): PDO
+    {
+        self::connect();
+        return self::$pdo;
+    }
+
     static public function query(string $sql, array $params = []) :PDOStatement
     {
         self::connect();

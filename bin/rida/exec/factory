@@ -1,0 +1,45 @@
+<?php
+
+$factoryName = ucfirst($argv[1]) ?? null;
+
+if ($argc <= 1){
+    echo "\n";
+    echo "Did you man php bin/rida/exec/factory <factory Name> ?> \n";
+    echo "\n";
+    exit();
+}
+
+$factoryDir = __DIR__ . '/../../../app/database/factories';
+$factoryStub = __DIR__ . '/../stubs/factory.stub';
+$factoryStub = file_get_contents($factoryStub);
+$factoryStub = str_replace('{{ factoryName }}', $factoryName, $factoryStub);
+
+$existentFactory = $factoryDir . '/' . $factoryName . '.php';
+if (file_exists($existentFactory)) {
+    echo "\n";
+    echo "Factory {$factoryName} already exists! \n";
+    echo "\n";
+    exit();
+}
+
+
+file_put_contents($factoryDir . '/' . $factoryName . '.php', $factoryStub);
+
+$cyan = "\033[1;36m";     // Bold Cyan
+$green = "\033[0;32m";    // Green
+$reset = "\033[0m";       // Reset color
+
+echo "\n";
+echo "{$green}
+#####   #######  ###           #
+#    #     #     #   #       #   #    
+#####      #     #    #     #     #
+# #        #     #    #    ######### 
+#  #       #     #   #    #         #
+#    #  #######  ###     #           #
+{$reset}\n";
+
+echo "\n";
+
+echo "{$cyan}Factory {$factoryName} created successfully!{$reset}\n";
+echo "\n";
