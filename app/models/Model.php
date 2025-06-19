@@ -32,6 +32,13 @@ class Model
         return $row ? static::hydrate($row) : null;
     }
 
+    public static function delete(int $id): bool
+    {
+        $sql = "DELETE FROM " . static::resolveTable() . " WHERE id = :id";
+        $stmt = Connection::query($sql, ['id' => $id]);
+        return $stmt->rowCount() > 0;
+    }
+
     public static function create(array $data): bool
     {
         $columns = array_keys($data);

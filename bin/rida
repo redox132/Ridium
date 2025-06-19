@@ -1,0 +1,46 @@
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+// Load your mocked User class file if needed
+// require_once __DIR__ . '/../src/App/Models/User.php';
+
+while (true) {
+    // Display the prompt
+    $input = readline("ridium> ");
+
+    if ($input === false) {
+        // User pressed Ctrl+D (EOF)
+        echo "\n";
+        break;
+    }
+
+    $input = trim($input);
+
+    if ($input === '') {
+        continue;
+    }
+
+    if ($input === 'exit') {
+        echo "Goodbye!\n";
+        break;
+    }
+
+    readline_add_history($input);
+
+    try {
+        try {
+            // Try to eval as expression with return
+            $result = eval('return ' . $input . ';');
+            if ($result !== null) {
+                echo var_export($result, true) . "\n";
+            }
+        } catch (ParseError $e) {
+            // If parse error, try as a statement
+            eval($input . ';');
+            echo "\n";
+        }
+    } catch (Throwable $e) {
+        echo "Error: " . $e->getMessage() . "\n";
+    }
+}

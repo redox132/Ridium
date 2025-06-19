@@ -31,3 +31,18 @@ function redirect(string $path): void
 }
 
 
+function color($text, $code) {
+    return "\033[" . $code . "m" . $text . "\033[0m";
+}
+
+function colorPrompt($text) {
+    return color($text, '36'); // Cyan
+}
+
+function colorOutput($text) {
+    return color($text, '32'); // Green
+}
+
+function colorError($text) {
+    return color($text, '31'); // Red
+}
