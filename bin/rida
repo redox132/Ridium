@@ -2,45 +2,45 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// Load your mocked User class file if needed
-// require_once __DIR__ . '/../src/App/Models/User.php';
+$allCode = '';
 
 while (true) {
-    // Display the prompt
-    $input = readline("ridium> ");
-
-    if ($input === false) {
-        // User pressed Ctrl+D (EOF)
-        echo "\n";
-        break;
-    }
+    $input = readline("☠  > ");
+    if ($input === false) break;
 
     $input = trim($input);
-
-    if ($input === '') {
-        continue;
-    }
+    if ($input === '') continue;
 
     if ($input === 'exit') {
-        echo "Goodbye!\n";
+        echo "Na razie!\n";
         break;
     }
+
+    $allCode .= $input . "\n";
+
+    $tmpFile = tempnam(sys_get_temp_dir(), 'ridium_');
+
+    $autoloadPath = realpath(__DIR__ . '/../vendor/autoload.php');
+    $bootstrap = "<?php\nrequire '" . $autoloadPath . "';\n";
+
+    file_put_contents($tmpFile, $bootstrap . $allCode);
 
     readline_add_history($input);
 
-    try {
-        try {
-            // Try to eval as expression with return
-            $result = eval('return ' . $input . ';');
-            if ($result !== null) {
-                echo var_export($result, true) . "\n";
-            }
-        } catch (ParseError $e) {
-            // If parse error, try as a statement
-            eval($input . ';');
-            echo "\n";
-        }
-    } catch (Throwable $e) {
-        echo "Error: " . $e->getMessage() . "\n";
+    $descriptorspec = [
+        1 => ['pipe', 'w'],
+        2 => ['pipe', 'w']
+    ];
+
+    $process = proc_open("php -d disable_functions=exec,system,shell_exec -f $tmpFile", $descriptorspec, $pipes);
+
+    if (is_resource($process)) {
+        echo stream_get_contents($pipes[1]);
+        echo "\n";
+        echo stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+        proc_close($process);
+        unlink($tmpFile);
     }
 }

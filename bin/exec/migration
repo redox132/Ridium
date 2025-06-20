@@ -1,10 +1,19 @@
 #!/usr/bin/env php
 <?php
 
+
 function make_migration(string $name): void
 {
+    (!str_ends_with($name, 's')) ? $name .= 's':$name;
+
     $timestamp = date('Ymd_His');
+
     $filename = $timestamp . '_' . strtolower($name) . '.php';
+
+    if (!str_ends_with($filename, 's.php'))  // Ensure the filename ends with 's' or 's.php'
+    {
+        $filename = $timestamp . '_' . strtolower($name) . 's' . '.php';
+    }
 
     $stubPath = __DIR__ . '/../stubs/migration.stub';
     $targetPath = __DIR__ . '/../../app/database/migrations/' . $filename;
@@ -14,12 +23,28 @@ function make_migration(string $name): void
         exit(1);
     }
 
-    copy($stubPath, $targetPath);
+    if (!is_dir(dirname($targetPath))) {
+        mkdir(dirname($targetPath), 0755, true);
+    }
 
-    echo "Migration created: migrations/$filename\n";
+    $stubContent = file_get_contents($stubPath);
+
+    $className = str_replace(' ', '', ucwords(str_replace('_', ' ', $name)));
+
+    $stubContent = str_replace('{{ className }}', strtolower($className), $stubContent);
+
+    file_put_contents($targetPath, $stubContent);
+
+    echo "-------------------------------------------------------------\n";
+    echo "Migration created: app/database/migrations/$filename\n";
+    echo "-------------------------------------------------------------\n";
 }
 
-$argv = $_SERVER['argv'];
+if (!isset($argv[1])) {
+    echo "Usage: php bin/rida/make/migration <MigrationName>\n";
+    exit(1);
+}
+
 
 if (!isset($argv[1])) {
     echo "Usage: php bin/rida/make/migration <MigrationName>\n";

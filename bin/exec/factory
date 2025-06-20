@@ -42,22 +42,7 @@ function make_factory(?string $factoryName): void
     // Write the final file
     file_put_contents($targetFile, $stub);
 
-    // Color codes
-    $cyan = "\033[1;36m";
-    $green = "\033[0;32m";
-    $reset = "\033[0m";
-
-    // ASCII Art + Confirmation
-    echo <<<ASCII
-{$green}
-#####   #######  ###           #
-#    #     #     #   #       #   #    
-#####      #     #    #     #     #
-# #        #     #    #    ######### 
-#  #       #     #   #    #         #
-#    #  #######  ###     #           #
-{$reset}
-ASCII;
+ 
 
     echo "\n\n{$cyan}Factory '{$factoryName}' created successfully at: app/database/factories/{$factoryName}.php{$reset}\n\n";
 }

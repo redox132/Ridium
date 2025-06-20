@@ -42,16 +42,6 @@ function make_view(?string $viewName): void
     $cyan = "\033[1;36m";
     $reset = "\033[0m";
 
-    echo <<<ASCII
-{$green}
-#####   #######  ###           #
-#    #     #     #   #       #   #    
-#####      #     #    #     #     #
-# #        #     #    #    ######### 
-#  #       #     #   #    #         #
-#    #  #######  ###     #           #
-{$reset}
-ASCII;
 
     echo "\n{$cyan}View '{$viewName}' created at: resources/views/{$sanitizedName}.blade.php at " . date('Y-m-d H:i:s') . "{$reset}\n\n";
 }

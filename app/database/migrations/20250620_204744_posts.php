@@ -8,7 +8,7 @@ return new class {
     public function up(PDO $pdo)
     {
 
-    $users = Schema::create('{{ className }}', function ($table) {
+    $sql = Schema::create('posts', function (Blueprint $table) {
         $table->increments('id');
         $table->timestamps();
     });
@@ -21,7 +21,7 @@ return new class {
 
     public function down(PDO $pdo)
     {
-        $pdo->exec("DROP TABLE IF EXISTS {{ className }}");
+        $pdo->exec("DROP TABLE IF EXISTS posts");
     }
     
 };

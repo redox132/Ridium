@@ -26,16 +26,6 @@ function make_controller(?string $controllerName): void
 
     file_put_contents($targetFile, $stub);
 
-    echo <<<ASCII
-
-#####   #######  ###           #
-#    #     #     #   #       #   #    
-#####      #     #    #     #     #
-# #        #     #    #    ######### 
-#  #       #     #   #    #         #
-#    #  #######  ###     #           #
-
-ASCII;
 
     echo "\n";
     echo "--------------------------------------------------------------------\n";
