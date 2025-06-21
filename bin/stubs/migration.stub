@@ -8,14 +8,14 @@ return new class {
     public function up(PDO $pdo)
     {
 
-    $users = Schema::create('{{ className }}', function ($table) {
+    ${{ className }} = Schema::create('{{ className }}', function ($table) {
         $table->increments('id');
         $table->timestamps();
     });
 
 
     // Execute with PDO
-    Connection::query($sql);
+    Connection::query(${{ className }});
 
     }
 

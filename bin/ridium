@@ -45,6 +45,10 @@ switch ($command) {
         require __DIR__ . '/exec/seed';
         seed();
         break;
+    case 'make:component':
+        require __DIR__ . '/exec/component';
+        make_component($argument);
+        break;
     default:
         echo "Unknown command: {$command}\n";
         exit(1);

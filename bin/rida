@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $allCode = '';
 
 while (true) {
-    $input = readline("☠  > ");
+    $input = readline("ridium ☠  > ");
     if ($input === false) break;
 
     $input = trim($input);

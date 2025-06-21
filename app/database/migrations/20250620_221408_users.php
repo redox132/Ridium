@@ -8,20 +8,20 @@ return new class {
     public function up(PDO $pdo)
     {
 
-    $sql = Schema::create('posts', function (Blueprint $table) {
+    $users = Schema::create('users', function (Blueprint $table) {
         $table->increments('id');
         $table->timestamps();
     });
 
 
     // Execute with PDO
-    Connection::query($sql);
+    Connection::query($users);
 
     }
 
     public function down(PDO $pdo)
     {
-        $pdo->exec("DROP TABLE IF EXISTS posts");
+        $pdo->exec("DROP TABLE IF EXISTS users");
     }
     
 };
