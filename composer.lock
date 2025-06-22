@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e3f4d12f6ca563c2a0a039f4f773c56",
+    "content-hash": "14e12bafccc03de3f76a92887f58abf4",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1341,12 +1341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/redox132/framework.git",
-                "reference": "8c8de079054e56180844a021456f9a05ef1e8023"
+                "reference": "794fedd06e40a31640df88b2fe9e4724ec715b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/redox132/framework/zipball/8c8de079054e56180844a021456f9a05ef1e8023",
-                "reference": "8c8de079054e56180844a021456f9a05ef1e8023",
+                "url": "https://api.github.com/repos/redox132/framework/zipball/794fedd06e40a31640df88b2fe9e4724ec715b49",
+                "reference": "794fedd06e40a31640df88b2fe9e4724ec715b49",
                 "shasum": ""
             },
             "default-branch": true,
@@ -1372,7 +1372,7 @@
                 "source": "https://github.com/redox132/framework/tree/main",
                 "issues": "https://github.com/redox132/framework/issues"
             },
-            "time": "2025-06-22T15:44:02+00:00"
+            "time": "2025-06-22T16:03:49+00:00"
         },
         {
             "name": "symfony/clock",

@@ -25,10 +25,6 @@
     {
       "type": "vcs",
       "url": "https://github.com/redox132/framework"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/redox132/Ridium"
     }
   ],
   "minimum-stability": "dev",
