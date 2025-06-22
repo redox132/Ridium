@@ -22,10 +22,10 @@
     }
   ],
   "require": {
-    "ridium/framework": "dev-main",
-    "vlucas/phpdotenv": "^5.6",
-    "fakerphp/faker": "^1.24",
-    "jenssegers/blade": "^2.0"
+      "vlucas/phpdotenv": "^5.6",
+      "ridium/framework": "^1.0",
+      "jenssegers/blade": "^2.0",
+      "fakerphp/faker": "^1.24"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

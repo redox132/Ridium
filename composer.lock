@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14e12bafccc03de3f76a92887f58abf4",
+    "content-hash": "bb68b619d14e1a8924d1cc23f6aded3c",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1337,25 +1337,18 @@
         },
         {
             "name": "ridium/framework",
-            "version": "dev-main",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/redox132/framework.git",
-                "reference": "db29bbc5b82adc2ba2e5ff4b2c0410ae86c78a66"
+                "reference": "b87e816027a6e3825a41c3f29d1e1e2525c218ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/redox132/framework/zipball/db29bbc5b82adc2ba2e5ff4b2c0410ae86c78a66",
-                "reference": "db29bbc5b82adc2ba2e5ff4b2c0410ae86c78a66",
+                "url": "https://api.github.com/repos/redox132/framework/zipball/b87e816027a6e3825a41c3f29d1e1e2525c218ef",
+                "reference": "b87e816027a6e3825a41c3f29d1e1e2525c218ef",
                 "shasum": ""
             },
-            "require": {
-                "fakerphp/faker": "^1.24",
-                "jenssegers/blade": "^2.0",
-                "php": ">=7.4",
-                "vlucas/phpdotenv": "^5.6"
-            },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1367,23 +1360,16 @@
             ],
             "authors": [
                 {
-                    "name": "redox132",
+                    "name": "Rida EL Kouri",
                     "email": "ridaelkouri@gmail.com"
                 }
             ],
-            "description": "Ridium Framework Package",
-            "keywords": [
-                "blade",
-                "dotenv",
-                "framework",
-                "php",
-                "ridium"
-            ],
+            "description": "the official Redium framework package",
             "support": {
-                "issues": "https://github.com/redox132/framework/issues",
-                "source": "https://github.com/redox132/framework"
+                "source": "https://github.com/redox132/framework/tree/v1.0.0",
+                "issues": "https://github.com/redox132/framework/issues"
             },
-            "time": "2025-06-22T16:49:03+00:00"
+            "time": "2025-06-22T12:51:33+00:00"
         },
         {
             "name": "symfony/clock",
@@ -2242,9 +2228,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "ridium/framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
