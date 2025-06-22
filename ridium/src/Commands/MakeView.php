@@ -12,7 +12,7 @@ class MakeView
             exit(1);
         }
 
-        $stubPath = __DIR__ . '/../../files/stubs/model.stub';
+        $stubPath = __DIR__ . '/../../files/stubs/view.stub';
         $targetDir = __DIR__ . '/../../../resources/views';
 
         // Sanitize view name and construct target file path

@@ -8,20 +8,20 @@ return new class {
     public function up(PDO $pdo)
     {
 
-    $S = Schema::create('S', function ($table) {
+    $Ridas = Schema::create('Ridas', function ($table) {
         $table->increments('id');
         $table->timestamps();
     });
 
 
     // Execute with PDO
-    Connection::query($S);
+    Connection::query($Ridas);
 
     }
 
     public function down(PDO $pdo)
     {
-        $pdo->exec("DROP TABLE IF EXISTS S");
+        $pdo->exec("DROP TABLE IF EXISTS Ridas");
     }
     
 };

@@ -11,8 +11,7 @@
   "autoload": {
     "psr-4": {
       "App\\": "app/",
-      "Ridium\\": "ridium/",
-      "RidiumFramework\\": "ridiumFramework/"
+      "Ridium\\": "ridium/"
     }
   },
   "repositories": [
@@ -22,10 +21,10 @@
     }
   ],
   "require": {
-      "vlucas/phpdotenv": "^5.6",
-      "ridium/framework": "^1.0",
-      "jenssegers/blade": "^2.0",
-      "fakerphp/faker": "^1.24"
+    "vlucas/phpdotenv": "^5.6",
+    "ridium/framework": "^1.0",
+    "jenssegers/blade": "^2.0",
+    "fakerphp/faker": "^1.24"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

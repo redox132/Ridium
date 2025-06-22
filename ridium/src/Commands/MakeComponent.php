@@ -6,7 +6,7 @@ class MakeComponent {
     public function handle(string $name) {
         $targetDir = __DIR__ . '/../../../resources/views/Components';
         $componentName = ucfirst($name);
-        $stubPath = __DIR__ . '/../../files/stubs/model.stub';
+        $stubPath = __DIR__ . '/../../files/stubs/component.stub';
 
         $componentFile = "{$targetDir}/{$componentName}.blade.php";
 

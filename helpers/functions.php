@@ -11,10 +11,10 @@ function basePath(string $path = ''): string
 function view(string $viewPath, array $data = [])
 {
 
-    $fullPath = basePath("resources/views/{$viewPath}.blade.php"); ;
+    $fullPath = __DIR__ . "/../resources/views/{$viewPath}.blade.php";
 
     if (!file_exists($fullPath)) {
-        throw new \Exception("View [{$viewPath}] not found.");
+        throw new \Exception("view [{$viewPath}] not found at $fullPath");
     }
 
     extract($data);
