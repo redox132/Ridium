@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+
+use Ridium\Ridium;
+
+$arguments = $argv;
+array_shift($arguments); // remove "rida"
+
+(new Ridium())->handle($arguments);

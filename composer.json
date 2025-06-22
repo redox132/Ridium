@@ -2,7 +2,9 @@
     "name": "rida/wadod",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Ridium\\": "ridium",
+            "RidiumFramework\\": "ridiumFramework" 
         }
     },
     "authors": [

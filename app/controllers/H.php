@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-class User extends Model
+class {{ class }} extends Model
 {
     // optional 
     // protected static string $table = 'users';
 
-    
     function posts()
     {
         // Assuming a User has many Posts

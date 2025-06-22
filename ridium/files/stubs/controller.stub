@@ -1,0 +1,16 @@
+<?php
+
+// declare(strict_types = 1);
+
+namespace App\Controllers;
+
+class {{ className }}
+{
+    // this should be the same as [className::class, 'index'] in the routes dir
+    // if the function right bellow named home, then the route would be [className::class, 'home']
+    public function index()
+    {
+        return view('your/pretty.view.php');
+    }
+
+}

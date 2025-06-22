@@ -1,11 +1,10 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
-$allCode = '';
+// Optional autoload if needed
+// require __DIR__ . '/../vendor/autoload.php';
 
 while (true) {
-    $input = readline("ridium ☠  > ");
+    $input = readline("ridium ☠ > ");
     if ($input === false) break;
 
     $input = trim($input);
@@ -16,28 +15,33 @@ while (true) {
         break;
     }
 
-    $allCode .= $input . "\n";
-
+    // Create a temporary file to evaluate this single input
     $tmpFile = tempnam(sys_get_temp_dir(), 'ridium_');
-
     $autoloadPath = realpath(__DIR__ . '/../vendor/autoload.php');
-    $bootstrap = "<?php\nrequire '" . $autoloadPath . "';\n";
 
-    file_put_contents($tmpFile, $bootstrap . $allCode);
+    $bootstrap = "<?php\n";
+    if ($autoloadPath) {
+        $bootstrap .= "require '" . $autoloadPath . "';\n";
+    }
+
+    $bootstrap .= $input . "\n";
+
+    file_put_contents($tmpFile, $bootstrap);
 
     readline_add_history($input);
 
     $descriptorspec = [
-        1 => ['pipe', 'w'],
-        2 => ['pipe', 'w']
+        1 => ['pipe', 'w'], // stdout
+        2 => ['pipe', 'w']  // stderr
     ];
 
     $process = proc_open("php -d disable_functions=exec,system,shell_exec -f $tmpFile", $descriptorspec, $pipes);
 
     if (is_resource($process)) {
-        echo stream_get_contents($pipes[1]);
-        echo "\n";
-        echo stream_get_contents($pipes[2]);
+        echo stream_get_contents($pipes[1]); // Output
+        echo "\n"; 
+        echo stream_get_contents($pipes[2]); // Error
+        echo "\n"; 
         fclose($pipes[1]);
         fclose($pipes[2]);
         proc_close($process);

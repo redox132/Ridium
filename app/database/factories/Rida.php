@@ -1,10 +1,10 @@
-<?php
+?php
 
 namespace App\Database\Factories;
 
 use Faker\Factory;
 
-class {{ factoryName }}
+class Rida
 {
     protected $faker;
 

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 session_name('request_session');
 session_start();
 
@@ -24,3 +22,5 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 // Route the request
 $router->route($uri, $method);
+
+

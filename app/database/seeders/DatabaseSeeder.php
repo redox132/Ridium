@@ -9,7 +9,7 @@ class DatabaseSeeder
 {
     public function run(): void
     {
-        $userFactory = new UserFactory;
-        $userFactory->seed(100);
+        // $userFactory = new UserFactory;
+        // $userFactory->seed(100);
     }
 }
