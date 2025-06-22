@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da3524b4cec12b53e216e3f21e234123",
+    "content-hash": "e46c68dec9a580e664be3ac7f3be0afe",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1336,23 +1336,27 @@
             "time": "2021-10-29T13:26:27+00:00"
         },
         {
-            "name": "ridium/framework",
-            "version": "v1.0.0",
+            "name": "radium/framework",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/redox132/framework.git",
-                "reference": "b87e816027a6e3825a41c3f29d1e1e2525c218ef"
+                "url": "https://github.com/nirix/unframework.git",
+                "reference": "7ac0307c3ef4f83362a9292f0b55a7cb20ff4765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/redox132/framework/zipball/b87e816027a6e3825a41c3f29d1e1e2525c218ef",
-                "reference": "b87e816027a6e3825a41c3f29d1e1e2525c218ef",
+                "url": "https://api.github.com/repos/nirix/unframework/zipball/7ac0307c3ef4f83362a9292f0b55a7cb20ff4765",
+                "reference": "7ac0307c3ef4f83362a9292f0b55a7cb20ff4765",
                 "shasum": ""
             },
+            "require-dev": {
+                "filp/whoops": "^1.1"
+            },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "RidiumFramework\\": "ridiumFramework/"
+                    "Unf\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1361,16 +1365,20 @@
             ],
             "authors": [
                 {
-                    "name": "Rida EL Kouri",
-                    "email": "ridaelkouri@gmail.com"
+                    "name": "Nirix"
                 }
             ],
-            "description": "the official Redium framework package",
+            "description": "Not a framework.",
+            "keywords": [
+                "routing",
+                "templating"
+            ],
             "support": {
-                "issues": "https://github.com/redox132/framework/issues",
-                "source": "https://github.com/redox132/framework/tree/v1.0.0"
+                "issues": "https://github.com/nirix/unframework/issues",
+                "source": "https://github.com/nirix/unframework/tree/master"
             },
-            "time": "2025-06-22T12:51:33+00:00"
+            "abandoned": "avalon/framework",
+            "time": "2016-04-13T02:27:29+00:00"
         },
         {
             "name": "symfony/clock",
@@ -2229,7 +2237,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "radium/framework": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
