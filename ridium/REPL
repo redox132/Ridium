@@ -1,6 +1,6 @@
 <?php
 
-// Optional 
+// Optional autoload if needed
 // require __DIR__ . '/../vendor/autoload.php';
 
 while (true) {
