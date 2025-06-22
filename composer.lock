@@ -1341,12 +1341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/redox132/framework.git",
-                "reference": "794fedd06e40a31640df88b2fe9e4724ec715b49"
+                "reference": "3c6dd2844f4d05064e1fa55aa932626be2649c07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/redox132/framework/zipball/794fedd06e40a31640df88b2fe9e4724ec715b49",
-                "reference": "794fedd06e40a31640df88b2fe9e4724ec715b49",
+                "url": "https://api.github.com/repos/redox132/framework/zipball/3c6dd2844f4d05064e1fa55aa932626be2649c07",
+                "reference": "3c6dd2844f4d05064e1fa55aa932626be2649c07",
                 "shasum": ""
             },
             "default-branch": true,
@@ -1363,16 +1363,15 @@
                 {
                     "name": "rida el kouri",
                     "email": "ridaelkouri@gmail.com",
-                    "homepage": "https://github.com/redox132"
+                    "homepage": "https://github.com/redox132/framework"
                 }
             ],
             "description": "The official Ridium framework package",
-            "homepage": "https://github.com/ridaelkouri/framework",
             "support": {
                 "source": "https://github.com/redox132/framework/tree/main",
                 "issues": "https://github.com/redox132/framework/issues"
             },
-            "time": "2025-06-22T16:03:49+00:00"
+            "time": "2025-06-22T16:15:01+00:00"
         },
         {
             "name": "symfony/clock",
