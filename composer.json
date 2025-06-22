@@ -24,7 +24,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/redox132/framework"
+      "url": "https://github.com/redox132/Ridium"
     }
   ],
   "minimum-stability": "dev",
