@@ -1341,13 +1341,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/redox132/framework.git",
-                "reference": "3c6dd2844f4d05064e1fa55aa932626be2649c07"
+                "reference": "db29bbc5b82adc2ba2e5ff4b2c0410ae86c78a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/redox132/framework/zipball/3c6dd2844f4d05064e1fa55aa932626be2649c07",
-                "reference": "3c6dd2844f4d05064e1fa55aa932626be2649c07",
+                "url": "https://api.github.com/repos/redox132/framework/zipball/db29bbc5b82adc2ba2e5ff4b2c0410ae86c78a66",
+                "reference": "db29bbc5b82adc2ba2e5ff4b2c0410ae86c78a66",
                 "shasum": ""
+            },
+            "require": {
+                "fakerphp/faker": "^1.24",
+                "jenssegers/blade": "^2.0",
+                "php": ">=7.4",
+                "vlucas/phpdotenv": "^5.6"
             },
             "default-branch": true,
             "type": "library",
@@ -1361,17 +1367,23 @@
             ],
             "authors": [
                 {
-                    "name": "rida el kouri",
-                    "email": "ridaelkouri@gmail.com",
-                    "homepage": "https://github.com/redox132/framework"
+                    "name": "redox132",
+                    "email": "ridaelkouri@gmail.com"
                 }
             ],
-            "description": "The official Ridium framework package",
+            "description": "Ridium Framework Package",
+            "keywords": [
+                "blade",
+                "dotenv",
+                "framework",
+                "php",
+                "ridium"
+            ],
             "support": {
-                "source": "https://github.com/redox132/framework/tree/main",
-                "issues": "https://github.com/redox132/framework/issues"
+                "issues": "https://github.com/redox132/framework/issues",
+                "source": "https://github.com/redox132/framework"
             },
-            "time": "2025-06-22T16:15:01+00:00"
+            "time": "2025-06-22T16:49:03+00:00"
         },
         {
             "name": "symfony/clock",
