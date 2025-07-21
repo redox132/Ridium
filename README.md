@@ -9,12 +9,7 @@ The official Redium framework package — a PHP framework designed for fast and 
 You can install the package via Composer:
 
 ```bash
-    composer require ridium/framework
-    or 
-    composer require ridium/framework:^1.0
-    or for unstable releases
-    composer require ridium/framework:dev-main
-
+    composer create-project ridium/framework project-folder
 ```
 
 # License
