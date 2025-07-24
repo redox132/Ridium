@@ -24,7 +24,6 @@ class Model
     }
 
     public static function find(int $id): static|null
-
     {
         $sql = "SELECT * FROM " . static::resolveTable() . " WHERE id = :id";
         $stmt = Connection::query($sql, ['id' => $id]);
@@ -80,5 +79,4 @@ class Model
         $stmt = Connection::query($sql, ['value' => $this->$foreignKey]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
-
 }
