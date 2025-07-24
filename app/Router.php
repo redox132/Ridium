@@ -40,16 +40,13 @@ class Router
         return $this;
     }
 
-
     public function whereNumber(string ...$paramNames): static
     {
         foreach ($paramNames as $name) {
             $this->numberConstraints[$name] = true;
         }
-
         return $this;
     }
-
 
     public function post(string $uri, array|string|callable $controller): void
     {
@@ -104,15 +101,17 @@ class Router
         $method = strtoupper($method);
 
         foreach ($this->routes as $route) {
-            if ($route['method'] === $method && preg_match($route['regex'], $uri, $matches)) {
-                array_shift($matches); // Remove full match
+            if ($route['method'] === $method && preg_match($route['regex'], $uri, $matches)) 
+            {
+                array_shift($matches); // Remove the full match from the beginning of the matches array
 
                 $params = array_combine($route['params'], $matches) ?: [];
 
                 // Validate numeric constraints
-                foreach ($params as $key => $value) {
-                    if (isset($this->numberConstraints[$key]) && !is_numeric($value)) {
-
+                foreach ($params as $key => $value) 
+                {
+                    if (isset($this->numberConstraints[$key]) && !is_numeric($value)) 
+                    {
                         http_response_code(404);
                         echo "404 Not Found";
                         throw new \InvalidArgumentException("Route parameter '{$key}' must be a number. Got: '{$value}'");
@@ -120,22 +119,25 @@ class Router
                     }
                 }
 
-
-                if (is_array($route['controller'])) {
+                if (is_array($route['controller']))
+                {
                     [$class, $action] = $route['controller'];
 
-                    if (class_exists($class) && method_exists($class, $action)) {
+                    if (class_exists($class) && method_exists($class, $action)) 
+                    {
                         return (new $class)->$action(...array_values($params));
                     }
 
                     throw new \Exception("Controller or method not found: $class@$action");
                 }
 
-                if (is_callable($route['controller'])) {
+                if (is_callable($route['controller']))
+                {
                     return call_user_func_array($route['controller'], array_values($params));
                 }
 
-                if (is_string($route['controller'])) {
+                if (is_string($route['controller']))
+                {
                     return view($route['controller'], $params);
                 }
             }
@@ -143,7 +145,9 @@ class Router
 
         if ($this->fallbackHandler) {
             call_user_func($this->fallbackHandler);
-        } else {
+        } 
+        else
+        {
             echo "404 Not Found";
         }
 

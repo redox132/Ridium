@@ -12,7 +12,7 @@ class MakeController
         }
 
         $controllerName = ucfirst($name);
-        $stubPath = __DIR__ .  '/../../files/stubs/model.stub';
+        $stubPath = __DIR__ .  '/../../files/stubs/controller.stub';
         $targetDir = __DIR__ . '/../../../app/controllers';
         $targetFile = "{$targetDir}/{$controllerName}.php";
 
